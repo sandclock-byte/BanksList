@@ -1,8 +1,11 @@
-import { BankList } from "./src/BankList";
+import { NavigationContainer } from '@react-navigation/native';
+import { BankListApp } from './src/BankListApp';
 
 const App = () => {
   return (
-    <BankList />
+    <NavigationContainer>
+      <BankListApp />
+    </NavigationContainer>
   );
 };
 

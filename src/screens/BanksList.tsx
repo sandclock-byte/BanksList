@@ -1,18 +1,30 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { Bank } from '../types/Bank'
+import { useBanksList } from '../hooks/useBanksList'
+import LoadingScreen from './LoadingScreen'
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-type Props = {
-    banks: Bank[]
-}
+export default function BanksList() {
 
-export default function BanksList({ banks }: Props) {
+    const { banks, isLoading } = useBanksList();
+    const { top } = useSafeAreaInsets();
+
+    if (isLoading) {
+        return (
+            <LoadingScreen />
+        )
+    }
 
     return (
-        <View>
-            <Text>BanksList</Text>
+        <View style={{ ...styles.container, paddingTop: top }}>
+            <Text>Banks List</Text>
         </View>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+    container: {
+        flex: 1,
+    }
+
+})

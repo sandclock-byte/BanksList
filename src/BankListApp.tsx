@@ -1,20 +1,18 @@
 
-import React from 'react'
-import { useBanksList } from './hooks/useBanksList';
-import LoadingScreen from './screens/LoadingScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BanksList from './screens/BanksList';
+
+const Stack = createNativeStackNavigator();
 
 export const BankListApp = () => {
 
-    const { banks, isLoading } = useBanksList();
-
-    if (isLoading) {
-        return (
-            <LoadingScreen />
-        )
-    }
-
     return (
-        <BanksList banks={banks} />
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen name='BanksList' component={BanksList} />
+        </Stack.Navigator>
     )
 }
