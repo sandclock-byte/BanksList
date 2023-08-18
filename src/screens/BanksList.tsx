@@ -23,6 +23,8 @@ export default function BanksList() {
                 ListHeaderComponent={Header}
                 renderItem={({ item }) => <ListItem bank={item} />}
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+                ListFooterComponent={() => <View style={{ height: 20 }} />}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     )

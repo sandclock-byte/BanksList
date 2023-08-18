@@ -1,14 +1,22 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Bank } from '../types/Bank'
+import { useNavigation } from '@react-navigation/native'
 
 type Props = {
     bank: Bank
 }
 
+
 export default function ListItem({ bank }: Props) {
 
+    const navigation = useNavigation<any>();
+
     const { bankName, description, url } = bank;
+
+    const goToDetail = () => {
+        navigation.navigate('BankDetail', { bank });
+    }
 
     return (
         <View style={styles.container}>
@@ -22,8 +30,20 @@ export default function ListItem({ bank }: Props) {
             </View>
 
             <View style={styles.infoContainer}>
-                <Text>{bankName}</Text>
-                <Text>{description}</Text>
+                <Text style={styles.bankName}>{bankName}</Text>
+                <Text
+                    style={styles.description}
+                    adjustsFontSizeToFit
+                    numberOfLines={2}
+                >
+                    {description}
+                </Text>
+                <Text
+                    style={styles.link}
+                    onPress={goToDetail}
+                >
+                    Ver más
+                </Text>
             </View>
         </View>
     )
@@ -33,7 +53,7 @@ const styles = StyleSheet.create({
 
     container: {
         flexDirection: 'row',
-        backgroundColor: 'gray',
+        backgroundColor: '#E7E7E7',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -66,6 +86,23 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow: 'hidden',
         backgroundColor: 'white'
+    },
+
+    bankName: {
+        fontSize: 18,
+        fontFamily: 'Poppins-Bold',
+    },
+
+    description: {
+        fontSize: 16,
+        fontFamily: 'Poppins-Regular'
+    },
+
+    link: {
+        fontSize: 16,
+        fontFamily: 'Poppins-Regular',
+        textDecorationLine: 'underline',
+        textAlign: 'right',
     }
 
 })
