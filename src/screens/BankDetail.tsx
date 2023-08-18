@@ -1,6 +1,7 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../BankListApp';
+import Icon from '../components/Icon';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'BankDetail'>;
 
@@ -27,6 +28,11 @@ export default function BankDetail({ route }: Props) {
                 </Text>
                 <View style={{ height: 50 }} />
             </ScrollView>
+            <Icon
+                name='back'
+                size={30}
+                color='black'
+            />
         </View>
     )
 }
