@@ -15,15 +15,15 @@ const icons = {
 
 export default function Icon({ name = 'back', size = 30, color = 'black' }: Props) {
 
-    // const IconComponent = icons[name];
+    const IconComponent = icons[name];
 
     return (
         <View style={{
             ...styles.container,
-            width: 80,
-            height: 80
+            width: size,
+            height: size
         }}>
-            <Back
+            <IconComponent
                 width='100%'
                 height='100%'
                 fill={color}
